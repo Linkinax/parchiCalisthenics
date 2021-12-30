@@ -1,0 +1,69 @@
+extends layout 
+
+block content 
+    .row.banner
+        .col-12 
+            h1 Parchi Calisthenics 
+        .row
+            .col-12.col-lg-9
+                .row
+                    .col-12.col-md-6
+                        p rating 
+                            i.fas.fa-star
+                            i.fas.fa-star
+                            i.fas.fa-star
+                            i.far.fa-star
+                            i.far.fa-star
+                        p Via della Questura 123, Brescia 
+                        .card.card-primary
+                            .card-block 
+                                h2.card-title Attrezzi &nbsp;
+                                span.badge.badge-warning
+                                    i.fa.fa-check &nbsp; Sbarra trazioni &nbsp;
+                                    
+                                span.badge.badge-warning
+                                    i.fa.fa-check &nbsp; Parallele &nbsp;
+                                    
+                                span.badge.badge-warning
+                                    i.fa.fa-check &nbsp; Panca addominali &nbsp;
+                                    
+                    .col-12.col-md-6.location-map 
+                        .card.card-primary 
+                            h2.card-title Mappa
+                            
+                            img.img-fluid.rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=45.5247845,10.2409879&zoom=17&size=400x350&sensor=false&markers=45.5247845,10.2409879&scale=2&key=AIzaSyBQhlMSrNlEgL2Ps_14LBC0WzARMrXOcvE')
+                    .row 
+                            .col-12 
+                                .card.card-primary.review-card
+                                    .card-block
+                                        a.btn.btn-primary.float-right(href='/location/review/new') Aggiung review 
+                                        h2.card-title Review degli utenti 
+                                        .row.review 
+                                            .col-12.no-gutters.review-header    
+                                                span.rating
+                                                    i.fas.fa-star
+                                                    i.fas.fa-star
+                                                    i.fas.fa-star
+                                                    i.far.fa-star
+                                                    i.far.fa-star
+                                                span.reviewAuthor Marco mengoni &nbsp;
+                                                small.reviewTimestamp 30 Dicembre 2021
+                                            .col-12 
+                                                p Bel parco 
+                                        .row.review 
+                                                .col-12.no-gutters.review-header    
+                                                    span.rating
+                                                        i.fas.fa-star
+                                                        i.fas.fa-star
+                                                        i.fas.fa-star
+                                                        i.far.fa-star
+                                                        i.far.fa-star
+                                                    span.reviewAuthor Marco Carta &nbsp;
+                                                    small.reviewTimestamp 30 Dicembre 2021
+                                                .col-12 
+                                                    p Ci sono Negozi nei dintorni?
+            .col-12.col-lg-3
+                p.lead Questa è una prova vediamo come viene questa recensione 
+                p Aggiungi un parco se ne sei a conoscenza 
+                             
+

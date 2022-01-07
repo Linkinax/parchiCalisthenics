@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
 
-
-
 const reviewSchema= new mongoose.Schema({
     author:String,
     rating: {
@@ -28,7 +26,7 @@ const locationSchema= new mongoose.Schema({
     facilities: [String],
     coord: {
         type:String,
-        coordinates: Number
+        coordinates: [Number]
     },
     reviews: [reviewSchema]
 });

@@ -1,39 +1,44 @@
 const mongoose = require('mongoose');
+var request = require("request");
 
-//Get home page
-const homeList= (req, res) =>{
+const apiOptions= {
+    server: "http://localhost:5560"
+};
+
+if(process.env.NODE_ENV ==='production'){
+    apiOptions.server= "https://ancient-lake-67862.herokuapp.com/"
+};
+
+const renderHomePage = (req, res, respBody)=>{
     res.render('location-list', {
         title: "Trova il parco più vicino a te!",
         pageHeader: {
             title: 'Parchi Calisthenics',
             strapline: 'Trova il parco più vicino a te'
         },
-        locations: [
-            {
-                name: 'Parco della Questura',
-                address: 'Via della questura 123, Brescia',
-                rating:3,
-                facilities: ['Sbarra trazioni ', 'Parrallele ', 'Panca abs '],
-                distance: '100m'
-            },
-            {
-                name: 'Campo Marte',
-                address: 'Via campo marte',
-                rating:4,
-                facilities: ['Sbarra trazioni ', 'Parrallele ', 'Panca abs '],
-                distance: "1200m"
-            },
-            {
-                name: 'Parco xyz',
-                address: 'Via della xyz 123, Brescia',
-                rating:2,
-                facilities: ["Ai", "B", "C"],
-                distance: "9999m"
-            }
-        ]
+        locations: respBody
     } );
 
 }
+//Get home page
+const homeList= (req, res) =>{
+
+    const path = '/api/locations';
+    const requestData = {
+        url: apiOptions.server.toString() + path,
+        method:'GET',
+        json: {},
+        qs: {
+            lng:  45.52495940664423,
+            lat: 10.242259493029255,
+            maxDist: 20
+            }
+        };
+
+        request( requestData, (err, resp, body) => {
+            renderHomePage(req, res, body);
+        });
+};
 
 //Get LocationInfo
 const locationInfo= (req, res) =>{

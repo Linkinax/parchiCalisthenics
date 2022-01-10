@@ -140,12 +140,12 @@ const locationsListByDistance =  async (req, res) => {
         ]);
         const locations = results.map(result => {
             return {
-                id: result.id,
+                id: result._id,
                 name:result.name,
                 address:result.address ,
                 rating: result.rating,
                 facilities: result.facilities ,
-                distance:  "${result.distance.calculated.toFixed()} m"
+                distance:  `${result.distance.calculated.toFixed()} m`
             }
         });
         console.log(results);

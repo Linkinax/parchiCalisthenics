@@ -39,14 +39,16 @@ const locationsReadOne = (req, res) => {
                 return res
                     .status(404)
                     .json({"message": "Location not found"});
-            }else if(error){
+            }else if(err){
                 return res
                     .status(404)
                     .json(err);
             }
+            console.log("Reading location "+ req.params.locationid);
+            console.log(response);
             res
-            .status(200)
-            .json({"status":"success"})
+                .status(200)
+                .json(response)
         });
  };
 

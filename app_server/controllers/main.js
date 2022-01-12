@@ -7,7 +7,10 @@ const ctrlOthers= require("../controllers/others");
 //Location Pages
 router.get('/', ctrlLocations.homeList);
 router.get('/location', ctrlLocations.locationInfo);
-router.get('/location/review/new', ctrlLocations.addReview);
+//Posting review
+router.route('/location/:locationid/review/new')
+    .get( ctrlLocations.addReview)
+    .post(ctrlLocations.doAddReview)
 
 //Other pages
 router.get('/about', ctrlOthers.about);

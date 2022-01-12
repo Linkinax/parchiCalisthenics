@@ -29,7 +29,7 @@ block content
                             .col-12 
                                 .card.card-primary.review-card
                                     .card-block
-                                        a.btn.btn-primary.float-right(href='/location/review/new') Aggiung review 
+                                        a.btn.btn-primary.float-right(href=`/location/${locationData.id}/review/new`) Aggiung review 
                                         h2.card-title Review degli utenti
                                         each comment in comments  
                                             .row.review

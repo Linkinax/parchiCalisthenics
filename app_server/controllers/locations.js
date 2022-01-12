@@ -78,37 +78,76 @@ const renderInfoLocationPage = (req, res, location)=>{
    
 } );
 }
-//Get LocationInfo
-const locationInfo= (req, res) =>{
 
+const getLocationInfo = (req, res, callback) => {
     const path = `api/locations/${req.params.locationid}`;
-    console.log(path);
-    const requestData = {
+    const requestOptions = {
         url: `${apiOptions.server}/${path}`, 
         method: "GET",
         json: {}
     };
-
-    console.log("url of the request "+ requestData.url);
-    request(requestData, (err,response, body) => {
-
+    request(requestOptions, (err, {statusCode}, body)=> {
         const data = body;
 
-        console.log("LocationInfo body request: ")
-        console.log(body);
-        data.coords = {
-            lng: data.coords.coordinates[0],
-            lat: data.coords.coordinates[1]
-        }
+        if(statusCode === 200) {
+            console.log(body);
+            data.coords = {
+                lng: data.coords.coordinates[0],
+                lat: data.coords.coordinates[1]
+            }
+            callback(req,res,data);
+        }else{
+            showErrors(req, res, statusCode);
 
-        renderInfoLocationPage(req, res, data);
-    } );
+        }
+    })
 }
+//Get LocationInfo
+const locationInfo= (req, res) =>{
+    getLocationInfo(req, res, 
+        (req,res,responseData)=> {renderInfoLocationPage(req,res, responseData)});
+}
+
+//showing Errors
+const showErrors = (req, res, status)=> {
+    let title= '';
+    let content = '';
+
+    if(status === 404){
+        title = '404, pagina non trovata';
+        content= 'Sembra che non sia stato possibile trovare la pagina... ';
+    }else{
+        title =  `OPS, ${status},  Sembra ci sia stato un errore`;
+        content= 'Sembra che ci sia stato un errore imprevisto';    
+    }
+
+    res.status(status);
+    res.render('generic-text', {title, content});
+
+}; 
 
 //Get AddReview
 const addReview= (req, res) =>{
-    res.render('location-review-form', {title: "Add review"} );
+    getLocationInfo(req, res, 
+        (req,res,responseData)=> {renderReviewForm(req,res, responseData)});
 }
+
+const doAddReview= (req, res)=>{
+   
+
+};
+
+const renderReviewForm = (req, res, {name}) => {
+
+    res.render('location-review-form', {
+        title: `Aggiungi una review del parco ${name}`,
+        pageHeader: { title: `Review  ${name}`
+        }
+    })
+
+}
+
+
 
 
 

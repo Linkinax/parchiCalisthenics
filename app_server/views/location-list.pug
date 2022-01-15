@@ -1,0 +1,44 @@
+extends layout
+include _includes/sharedHTMLfunctions
+
+block content
+    .row.banner
+        .col-12 
+            h1 Parchi calisthenics 
+                small &nbsp; Trova i parchi per i tuoi work-out! 
+    .row 
+        .col-12.col-md-8 
+            .error= message
+            each location in locations
+                .card 
+                    .card-block 
+                        h4 
+                            a(href=`/location/${location.id}`) #{location.name}
+                                small &nbsp;
+                                +outputRating(location.rating)
+
+                            span.badge.badge-pill.badge-default.float-right #{location.distance}
+                        p.address= location.address 
+                        .facilities
+                        each facility in location.facilities
+                            span.badge.badge-warning= facility
+                            
+    .row 
+        .col-12.col-md-8 
+            .card 
+                .card-block 
+                    h4
+                        a(href="/location") Parco DUE
+                            i.fas.fa-star
+                            i.fas.fa-star
+                            i.fas.fa-star    
+                        span.badge.badge-pill.badge-default.float-right 666m
+                    p.address Via BRESCIA 123456, Brescia 
+                        .facilities 
+                            span.badge.badge-warning Sbarra Trazioni
+                            span.badge.badge-warning Panca Abs 
+                            span.badge.badge-warning Parallele
+    
+
+    .col-12.col-md-8 
+         p Tool per trovare parchi con attrezzatura da calisthenics

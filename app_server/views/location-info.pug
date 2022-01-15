@@ -24,14 +24,14 @@ block content
                         .card.card-primary 
                             h2.card-title Mappa
                             
-                            img.img-fluid.rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=45.5247845,10.2409879&zoom=17&size=400x350&sensor=false&markers=45.5247845,10.2409879&scale=2&key=AIzaSyBQhlMSrNlEgL2Ps_14LBC0WzARMrXOcvE')
+                            img.img-fluid.rounded(src=`http://maps.googleapis.com/maps/api/staticmap?center=${locationData.coords.lng},${locationData.coords.lat}&zoom=17&size=400x350&sensor=false&markers=${locationData.coords.lng},${locationData.coords.lat}&scale=2&key=AIzaSyBQhlMSrNlEgL2Ps_14LBC0WzARMrXOcvE`)
                     .row 
                             .col-12 
                                 .card.card-primary.review-card
                                     .card-block
-                                        a.btn.btn-primary.float-right(href=`/location/${locationData.id}/review/new`) Aggiung review 
+                                        a.btn.btn-primary.float-right(href=`/location/${locationData._id}/review/new`) Aggiung review 
                                         h2.card-title Review degli utenti
-                                        each comment in comments  
+                                        each comment in locationData.reviews  
                                             .row.review
                                                 .col-12.no-gutters.review-header
                                                     span.rating    
@@ -39,7 +39,7 @@ block content
                                                     span.reviewAuthor= comment.author
                                                     small.reviewTimestamp=comment.time                                           
                                                 .col-12
-                                                    p= comment.content 
+                                                    p= comment.reviewText 
                                         
                                             
                                         .row.review 

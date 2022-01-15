@@ -3,7 +3,10 @@ const Parchi = mongoose.model('Location');
 
 
 const reviewsCreate = (req, res) => {
-    const locationId = req.params.locationId;
+    const locationId = req.params.locationid;
+
+    console.log("Creating review with loc_id="+ locationId);
+    console.log(req.params);
     if(locationId){
         Parchi.
             findById(locationId)
@@ -181,14 +184,18 @@ const reviewsDeleteOne = (req, res) => {
 
 //Adding a review to MongoDB 
 const doAddReview = (req, res, location) => {
+    console.log("Do add review from API");
+    console.log(location);
     if(!location){
         res
             .status(404)
             .json({"message": "Location not found"});
     }else{
         const {author, rating, reviewText}= req.body;
+
+        console.log(location);
         //Trying to push into a subdocument
-        location.push({
+        location.reviews.push({
             author,
             rating,
             reviewText

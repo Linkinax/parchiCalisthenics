@@ -6,7 +6,7 @@ block content
             h1 Review Parchi 
     .row
         .col-12.col-md-8 
-            form(action="", method="post", role="form")
+            form(action="", method="post", role="form", id="ReviewForm")
                 .form-group.row
                     label.col-10.col-sm-2.col-form-label(for="name") Nome 
                     .col-12.col-sm-10
@@ -20,9 +20,10 @@ block content
                             option 3
                             option 2
                             option 1
-            .form-group.row
-                label.col-sm-2.col-form-label(for="review") Review 
-                .col-sm-10 
-                    textarea#review.form-control(name="review", rows="5")
-            button.btn.btn-primary.float-right Add my review 
+                .form-group.row
+                    label.col-sm-2.col-form-label(for="review") Review 
+                    .col-sm-10 
+                        textarea#review.form-control(name="review", rows="5")
+                
+                button.btn.btn-primary.float-right(type='submit', form="ReviewForm") Add my review 
         .col-12.col-md-4

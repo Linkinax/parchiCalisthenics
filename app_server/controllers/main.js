@@ -9,8 +9,8 @@ router.get('/', ctrlLocations.homeList);
 router.get('/location', ctrlLocations.locationInfo);
 //Posting review
 router.route('/location/:locationid/review/new')
-    .get( ctrlLocations.addReview)
-    .post(ctrlLocations.doAddReview)
+    .get(ctrlLocations.addReview)
+    .post(ctrlLocations.doAddReview);
 
 //Other pages
 router.get('/about', ctrlOthers.about);

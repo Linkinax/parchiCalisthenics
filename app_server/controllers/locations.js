@@ -132,9 +132,41 @@ const addReview= (req, res) =>{
         (req,res,responseData)=> {renderReviewForm(req,res, responseData)});
 }
 
-const doAddReview= (req, res)=>{
-   
 
+const doAddReview= (req, res)=>{
+
+    
+    const locationid= req.params.locationid;
+    const path = `api/locations/${req.params.locationid}/reviews`;
+
+    console.log("Controller doAddReview location id: "+ locationid);
+    console.log(req.body);
+    //Data from the Review Form
+    const postData ={
+        author: req.body.name,
+        rating: parseInt(req.body.rating, 10),
+        reviewText: req.body.review
+    }
+
+    console.log(postData);
+
+    const requestOptions = {
+        url: `${apiOptions.server}/${path}`, 
+        method: "POST",
+        json: postData
+    };
+
+    request(
+        requestOptions,
+        (err, {statusCode}, body)=> {
+            if(statusCode === 201){
+                res.redirect(`/location/${locationid}`);
+            }else{
+                showErrors(req, res, statusCode);
+            }
+        }
+    );
+   
 };
 
 const renderReviewForm = (req, res, {name}) => {
@@ -154,5 +186,6 @@ const renderReviewForm = (req, res, {name}) => {
 module.exports = {
     homeList,
     locationInfo,
-    addReview
+    addReview, 
+    doAddReview
 };

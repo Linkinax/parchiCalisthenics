@@ -2,6 +2,15 @@ const mongoose= require('mongoose');
 require('./locations');
 
 const dbURI = "mongodb+srv://link:V3l3n0@cluster0.zbdfn.mongodb.net/TestParchiCalisthenics";
+
+const testSecretDB = process.env.secretMongoDbUri;
+console.log(testSecretDB);
+
+console.log(process.env);
+
+
+
+/*
 mongoose.connect(dbURI, {useNewURLparser:true});
 
 
@@ -23,4 +32,4 @@ const shoutDown = (msg, call) => {
         console.log("closing mongo connection ${msg}");
      call()
     });
-}
+}/*

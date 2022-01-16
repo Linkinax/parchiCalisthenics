@@ -9,7 +9,7 @@ console.log(testSecretDB);
 if(testSecretDB == 'undefined'){
     console.log(process.env);
 }
-g
+
 
 
 

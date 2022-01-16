@@ -1,9 +1,9 @@
 const mongoose= require('mongoose');
-const db = require('./../../.env/db.json');
+const secret = require('./../../.env/secrets.json');
 require('./locations');
 
 
-mongoose.connect(db.MongoDbUri, {useNewURLparser:true});
+mongoose.connect(secret.MongoDbUri, {useNewURLparser:true});
 
 
 mongoose.connection.on('connected', ()=>{

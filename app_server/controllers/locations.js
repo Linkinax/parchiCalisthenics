@@ -156,16 +156,31 @@ const doAddReview= (req, res)=>{
         json: postData
     };
 
-    request(
-        requestOptions,
-        (err, {statusCode}, body)=> {
-            if(statusCode === 201){
-                res.redirect(`/location/${locationid}`);
-            }else{
-                showErrors(req, res, statusCode);
+    //Application validation
+    if(!postData.author || !postData.rating || !postData.reviewText){
+        res.redirect(`/location/${locationid}/review/new/?err=val` );
+
+    }
+    else{
+        request(
+            requestOptions,
+            (err, {statusCode}, {name}, body)=> {
+                if(statusCode === 201){
+                    res.redirect(`/location/${locationid}`);
+                }
+                else if(statusCode===400 && name && name=== 'ValidationError') {
+                    res.redirect(`/location/${locationid}/review/new/?err=val` );
+    
+                }
+                else{
+                    console.log(body);
+                    showErrors(req, res, statusCode);
+                }
             }
-        }
-    );
+        );
+
+    }
+    
    
 };
 
@@ -174,7 +189,8 @@ const renderReviewForm = (req, res, {name}) => {
     res.render('location-review-form', {
         title: `Aggiungi una review del parco ${name}`,
         pageHeader: { title: `Review  ${name}`
-        }
+        },
+        error: req.query.error
     })
 
 }

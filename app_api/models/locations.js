@@ -2,13 +2,14 @@ const mongoose = require('mongoose');
 
 
 const reviewSchema= new mongoose.Schema({
-    author:String,
+    author: {type: String, required: true},
     rating: {
         type:Number,
-        'default':0, 
+        'default':0,
+        required: true, 
         min:0,
         max:5},
-    reviewText:String,
+    reviewText: {type: String, required: true},
     createdOn:{
         type:Date,
         'default':Date.now

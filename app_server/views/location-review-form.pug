@@ -7,6 +7,9 @@ block content
     .row
         .col-12.col-md-8 
             form(action="", method="post", role="form", id="ReviewForm")
+                if (error== "val")
+                    .alert.alert-danger(role="alert") Vanno completati tutti i campi
+
                 .form-group.row
                     label.col-10.col-sm-2.col-form-label(for="name") Nome 
                     .col-12.col-sm-10

@@ -39,5 +39,5 @@ jobs:
           echo test, and deploy your project.
       
       - name: Run server
-        run: npm start 
+          run: npm start 
         

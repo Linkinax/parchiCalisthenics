@@ -6,7 +6,7 @@ const dbURI = "mongodb+srv://link:V3l3n0@cluster0.zbdfn.mongodb.net/TestParchiCa
 const testSecretDB = process.env.secretMongoDbUri;
 console.log(testSecretDB);
 
-if(testSecretDB == 'undefined'){
+if(testSecretDB == undefined){
     console.log(process.env);
 }
 

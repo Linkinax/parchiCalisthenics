@@ -6,7 +6,10 @@ const dbURI = "mongodb+srv://link:V3l3n0@cluster0.zbdfn.mongodb.net/TestParchiCa
 const testSecretDB = process.env.secretMongoDbUri;
 console.log(testSecretDB);
 
-console.log(process.env);
+if(testSecretDB === 'undefined'){
+    console.log(process.env);
+}
+
 
 
 
@@ -32,4 +35,4 @@ const shoutDown = (msg, call) => {
         console.log("closing mongo connection ${msg}");
      call()
     });
-}/*
+}*/

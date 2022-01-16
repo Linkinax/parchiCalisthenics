@@ -3,10 +3,10 @@ require('./locations');
 
 
 const dbURI = "mongodb+srv://link:V3l3n0@cluster0.zbdfn.mongodb.net/TestParchiCalisthenics";
+const secretMongoDbUri = process.env.MONGODB_CONNECTION_URI;
 
-const secretDBUri = process.env.MONGODB_CONNECTION_URI;
 
-console.log("Here's the secret: "+ secretDBUri);
+console.log("Here's the secret: "+ secretMongoDbUri);
 
 mongoose.connect(dbURI, {useNewURLparser:true});
 

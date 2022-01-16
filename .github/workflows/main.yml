@@ -25,8 +25,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - env:
-          secretMongoDbUri: ${{ secrets.MONGODB_CONNECTION_URI }}
+      env:
+        secretMongoDbUri: ${{ secrets.MONGODB_CONNECTION_URI }}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script

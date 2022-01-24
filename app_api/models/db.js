@@ -3,7 +3,8 @@ const secret = require('./../../.env/secrets.json');
 require('./locations');
 
 
-mongoose.connect(secret.MongoDbUri, {useNewURLparser:true});
+var dbURI = secret.MongoDbUri;
+mongoose.connect(dbURI, {useNewURLparser:true});
 
 
 mongoose.connection.on('connected', ()=>{

@@ -1,0 +1,16 @@
+<p>home-list works!</p>
+
+<div class="card">
+<div class="card-block">
+   <h4> <a href="/location/{{location._id}}">{{location.name}}<small>&nbsp;</small>
+    <i class="fa{{ location.rating < 1 ? 'r': 's'}} fa-star"></i>
+    <i class="fa{{ location.rating < 2 ? 'r': 's'}} fa-star"></i>
+    <i class="fa{{ location.rating < 3 ? 'r': 's'}} fa-star"></i>
+    <i class="fa{{ location.rating < 4 ? 'r': 's'}} fa-star"></i>
+    <i class="fa{{ location.rating < 5 ? 'r': 's'}} fa-star"></i>
+    </a>
+    <span class="badge badge-pill badge-default float-right">{{location.distance | distance}} m</span>
+  </h4><p class="address"> {{location.address}}</p><div class="facilities"></div>
+      <span *ngFor="let facility of location.facilities" class="badge badge-warning"> {{facility}} </span>
+
+</div>

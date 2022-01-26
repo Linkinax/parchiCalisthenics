@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from './Location';
+import { ParchiDataService } from '../parchi-data.service';
 
 @Component({
   selector: 'app-home-list',
@@ -10,19 +11,22 @@ import { Location } from './Location';
 
 export class HomeListComponent implements OnInit {
 
-  constructor() { }
-  name= "Parco della Questura";
+  public locations!: Location[];
 
-  location: Location= {
-    _id: "String",
-    name: "Parco della questura",
-    distance: 14,
-    address: "Via edlla questura",
-    rating: 3,
-    facilities: ["sbarra trazioni", "panca addominali", "parallele"],
+  private getLocations():void {
+    this.parchiDataService
+      .getLocations()
+      .then((foundLocations )=> this.locations=foundLocations);
 
   }
+
+  constructor( private parchiDataService: ParchiDataService) { }
+  name= "Parco della Questura";
+
+
+
   ngOnInit(): void {
+    this.getLocations();
   }
 
 }

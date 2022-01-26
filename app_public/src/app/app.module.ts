@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 
 import { HomeListComponent } from './home-list/home-list.component';
 import { DistancePipe } from './distance.pipe';
@@ -11,7 +13,9 @@ import { DistancePipe } from './distance.pipe';
      DistancePipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [HomeListComponent]

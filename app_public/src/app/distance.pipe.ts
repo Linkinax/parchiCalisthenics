@@ -9,7 +9,7 @@ export class DistancePipe implements PipeTransform {
   transform(distance: number): string {
 
     const isNumeric = function (n: any){
-      return isNaN(parseFloat(n));
+      return !isNaN(parseFloat(n)) && isFinite(n);
     };
 
     if (distance && isNumeric(distance)){

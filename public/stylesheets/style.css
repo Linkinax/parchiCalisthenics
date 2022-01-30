@@ -32,7 +32,7 @@ legend {
 }
 
 .card {
-  background-color: #469ea8;
+  background-color: #ffdbae;
   padding: 1rem;
 }
 
@@ -43,13 +43,13 @@ legend {
 
 .banner {
   margin-top: 4em;
-  border-bottom: 1px solid #469ea8;
+  border-bottom: 1px solid #eab676;
   margin-bottom: 1.5em;
   padding-bottom: 0.5em;
 }
 
 .review-header {
-  background-color: #31727a;
+  background-color: #ff6701;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;
@@ -67,17 +67,17 @@ legend {
 }
 
 h4 a, h4 a:hover {
-  color: #fff;
+  color: #9a2424;
 }
 
 h4 small {
   font-size: 60%;
   line-height: 200%;
-  color: #aaa;
+  color: #9b6501;
 }
 
 h1 small {
-  color: #aaa;
+  color: #9b6501;
 }
 
 .address {
@@ -86,6 +86,7 @@ h1 small {
 
 .facilities span.badge {
   margin-right: 2px;
+  margin-left: 2px;
 }
 
 p {
@@ -93,15 +94,31 @@ p {
 }
 
 a {
-  color: rgba(255, 255, 255, 0.8)
+  color: #9a2424
 }
 
 a:hover {
-  color:#fff
+  color:#9a2424
 }
 
 body {
   font-family: "Cabin", Arial, sans-serif;
   color: #fff;
-  background-color: #008a93;
+  background-color: #fa9353;
+}
+
+p.address{
+  color: #9a2424;
+}
+
+p.review{
+  color: #9a2424;
+  margin-left: 2px;
+}
+
+span.badge.badge-warning{
+  background-color:#fd731e;
+  padding: 0.2rem;
+  margin: 0.07rem;
+
 }

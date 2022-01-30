@@ -24,6 +24,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//defying static path for angular application 
+app.use(express.static(path.join(__dirname, 'app_public')));
+
 
 //Allowing CORS request 
 app.use("/api", (req, res, next)=> {

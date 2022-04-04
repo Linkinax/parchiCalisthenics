@@ -11,6 +11,7 @@ import { FrameworkComponent } from './framework/framework.component';
 import { AboutComponent } from './about/about.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { PageHeaderComponent } from './page-header/page-header.component';
      AboutComponent,
      HomepageComponent,
      PageHeaderComponent,
+     SidebarComponent,
     ],
 
   imports: [

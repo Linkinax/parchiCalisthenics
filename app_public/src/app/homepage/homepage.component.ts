@@ -12,4 +12,13 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public pageContent = {
+    header: {
+      title: "Parchi calisthenics",
+      strapLine: "Trova i parchi calisthenics più vicini a te!",
+
+    },
+    sidebar: "Sidebar da cambiare successivamente"
+  };
+
 }

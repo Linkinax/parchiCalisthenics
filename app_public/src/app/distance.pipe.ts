@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -6,21 +7,27 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DistancePipe implements PipeTransform {
 
 
+
   transform(distance: number): string {
 
     const isNumeric = function (n: any){
       return !isNaN(parseFloat(n)) && isFinite(n);
     };
 
-    if (distance && isNumeric(distance)){
+    distance =  Number(distance.toString().replace(" m", ""));
+
+    if (distance){
       let thisDistance= '0';
       let unit = 'm';
 
       if(distance > 1000){
-        thisDistance = (distance/1000).toFixed(1);
+        let tmp = Number(distance / 1000);
+        thisDistance = (distance/1000).toFixed(1).toString();
         unit = 'km';
       }else{
-        thisDistance = Math.floor(distance).toString();
+        console.log("distance Pipe, else: "+ Number(distance));
+
+        console.log("pipe case < 1000: "+ (Math.floor(distance)));
       }
       return thisDistance + unit;
     }else{

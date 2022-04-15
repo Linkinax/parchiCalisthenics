@@ -12,4 +12,13 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public pageContent = {
+    header: {
+      title: 'Parchi calisthenics info',
+      strapline: ' '
+    },
+    content :  'Questo sito è stato creato per aiutare gli amanti del calisthenics a trovare parchi con le attrezzature adatte alla propre esigenze'
+
+  }
+
 }

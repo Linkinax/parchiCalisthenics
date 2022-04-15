@@ -17,11 +17,21 @@ export class HomeListComponent implements OnInit {
 
   private getLocations(position:any):void {
 
-    this.message= "In cerca dei parchi vicini..."
 
+    this.message= "In cerca dei parchi vicini..."
+    const lat: number = position.coords.latitude;
+    const lng: number = position.coords.longitude;
+
+
+
+    console.log("HomeList compnent position:")
+    console.log(position);
+
+    console.log("HomeList compnent position.coordinates:")
+    console.log(position.coords);
 
     this.parchiDataService
-      .getLocations()
+      .getLocations(lat, lng)
       .then((foundLocations )=> {
 
         this.message = foundLocations.length >0 ? ' ': "Nessun parco trovato =( "

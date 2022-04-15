@@ -10,12 +10,9 @@ export class ParchiDataService {
 
   private apiBaseUrl =  "http://localhost:5560/api";
   constructor(private http: HttpClient) {
-    //TO-DO
    }
 
-   public getLocations(): Promise< Location[] > {
-     const lng: number = 45.53180797634532;
-     const lat: number = 10.240715853814319;
+   public getLocations(lat: number, lng:number): Promise< Location[] > {
      const maxDistance: number = 20;
      const url: string = `${this.apiBaseUrl}/locations?lng=${lng}&lat=${lat}&maxDist=${maxDistance}`;
 

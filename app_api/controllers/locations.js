@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Parchi = mongoose.model('Location');
 
-//PlaceHolder functions to build the app w/o errors
-
 const locationsCreate = (req, res) => {
     Parchi.create({
         name:req.body.name,
@@ -110,6 +108,7 @@ const locationsUpdateOne = (req, res) => {
 const locationsListByDistance =  async (req, res) => {
     const lng = parseFloat(req.query.lng);
     const lat = parseFloat(req.query.lat);
+    const maxD = req.query.maxDist;
     
     const near= {
         type: "Point",
@@ -120,7 +119,7 @@ const locationsListByDistance =  async (req, res) => {
         distanceField: "distance.calculated",
         key:'coords',
         spherical:true,
-        maxDistance:20000,
+        maxDistance:2000000,
         $limit:10
     }
 

@@ -13,7 +13,6 @@ export class DistancePipe implements PipeTransform {
     const isNumeric = function (n: any){
       return !isNaN(parseFloat(n)) && isFinite(n);
     };
-
     distance =  Number(distance.toString().replace(" m", ""));
 
     if (distance){
@@ -21,13 +20,11 @@ export class DistancePipe implements PipeTransform {
       let unit = 'm';
 
       if(distance > 1000){
-        let tmp = Number(distance / 1000);
         thisDistance = (distance/1000).toFixed(1).toString();
         unit = 'km';
       }else{
-        console.log("distance Pipe, else: "+ Number(distance));
+        thisDistance = Math.floor(distance).toString();
 
-        console.log("pipe case < 1000: "+ (Math.floor(distance)));
       }
       return thisDistance + unit;
     }else{

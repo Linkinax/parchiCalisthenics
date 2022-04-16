@@ -86,6 +86,7 @@ const getLocationInfo = (req, res, callback) => {
         method: "GET",
         json: {}
     };
+    
     request(requestOptions, (err, {statusCode}, body)=> {
         const data = body;
 

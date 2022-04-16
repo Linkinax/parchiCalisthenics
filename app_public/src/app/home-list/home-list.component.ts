@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from './Location';
+import { ParkLocation } from './ParkLocation';
 import { ParchiDataService } from '../parchi-data.service';
 import { GeolocationService } from '../geolocation.service';
 
@@ -12,7 +12,7 @@ import { GeolocationService } from '../geolocation.service';
 
 export class HomeListComponent implements OnInit {
 
-  public locations!: Location[];
+  public locations!: ParkLocation[];
   public message:string | undefined;
 
   private getLocations(position:any):void {
@@ -34,7 +34,7 @@ export class HomeListComponent implements OnInit {
       .getLocations(lat, lng)
       .then((foundLocations )=> {
 
-        this.message = foundLocations.length >0 ? ' ': "Nessun parco trovato =( "
+        this.message = foundLocations.length >0 ? ' ': "Nessun parco trovato nelle tue vicinanze =( "
 
         this.locations=foundLocations
       });
